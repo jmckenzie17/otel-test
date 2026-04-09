@@ -1,0 +1,36 @@
+# .github/workflows/hello-world.yml
+name: Hello World
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello-dev:
+    name: Hello World (dev)
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run hello world script
+        run: |
+          set -euo pipefail
+          echo "Hello, World! Running in the dev environment"
+
+  hello-staging:
+    name: Hello World (staging)
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run hello world script
+        run: |
+          set -euo pipefail
+          echo "Hello, World! Running in the staging environment"
