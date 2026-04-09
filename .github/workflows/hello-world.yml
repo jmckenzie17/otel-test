@@ -21,6 +21,9 @@ jobs:
           set -euo pipefail
           echo "Hello, World! Running in the dev environment"
 
+      - name: Wait 60 seconds
+        run: sleep 60
+
   hello-staging:
     name: Hello World (staging)
     runs-on: ubuntu-latest
@@ -34,3 +37,21 @@ jobs:
         run: |
           set -euo pipefail
           echo "Hello, World! Running in the staging environment"
+
+      - name: Wait 60 seconds
+        run: sleep 60
+
+  hello-prod:
+    name: Hello World (prod)
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run hello world script
+        run: |
+          set -euo pipefail
+          echo "Hello, World! Running in the prod environment"
+          exit 1
